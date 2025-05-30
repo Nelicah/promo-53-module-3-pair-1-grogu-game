@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../styles/App.scss";
 import Header from "./Header";
 import Board from "./Board";
+import Dice from "./Dice";
 
 function App() {
   const [name, setName] = useState("");
@@ -17,11 +18,12 @@ function App() {
   const [game, setGame] = useState("");
 
   const rollDice = (max) => {
-    return Math.floor(Math.random() * max);
+    const number = Math.floor(Math.random() * max);
+    return number;
   };
   console.log(rollDice(4));
-  const numberDice = rollDice(4);
-  /* setGame(numberDice === 4 ? setPosition : )*/
+  /*const numberDice = rollDice(4);
+   setGame(numberDice === 4 ? setPosition : ) */
 
   return (
     <>
@@ -34,11 +36,8 @@ function App() {
           onChange={handleName}
         />
         <Board />
-        <section>
-          <button className="dice">Lanzar Dado</button>
-          <div className="game-status">En curso</div>
-        </section>
-
+        <Dice rollDice={rollDice} />
+        {console.log(number)}
         <section className="goods-container">
           <div className="goods-item">🍪</div>
           <div className="goods-item">🍪</div>
